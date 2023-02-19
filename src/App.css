@@ -1,0 +1,200 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+.App {
+  text-align: center;
+}
+/* Home */
+.home{
+  display: flex;
+  width: 40%;
+  height: 100vh;
+  background-size:contain;
+  background-repeat: no-repeat;
+  text-align: center;
+  margin-left: 30%;
+  margin-right: 30%;
+  padding-bottom: 50%;
+
+}
+/* Game */
+.wrapper{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.startBtn{
+  width: 200px;
+  height: 35px;
+  margin-top: -25px;
+  margin-bottom: 30px;
+  cursor: pointer;
+  color: rgb(181, 181, 6);
+  outline: none;
+  font-family: 'Pirata One', cursive;
+  font-size: 28px;
+}
+.startBtn:hover{
+background-color: rgba(4, 5, 87, 0.648);
+color:blue;
+transition: .3s ease;
+border-radius: 10px;
+}
+.gameInfo{
+  padding-top: 3%;
+  padding-left: 5%;
+  font-size: 24px;
+  font-family: 'Mansalva', cursive;
+  color: grey
+}
+.gameInfo:hover{
+  cursor: pointer;
+  color: tomato;
+}
+.result1 .gameInfo{
+  margin-top: 25%;
+  color: green;
+  font-family: 'Pirata One', cursive;
+  /* font-size: 36px; */
+}
+.result2 .gameInfo{
+  margin-top: -9%;
+  color: rgb(208, 208, 17);
+  font-family: 'Pirata One', cursive;
+  /* font-size: 36px; */
+}
+.result3 .gameInfo{
+  margin-top: -9%;
+  color: rgb(208, 208, 17);
+  font-family: 'Pirata One', cursive;
+  /* font-size: 36px; */
+}
+/* Board */
+.board{
+  margin-top: 18%;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-wrap: wrap;
+}
+/* Square */
+.square{
+  padding-top: 50px;
+  padding-left: 25px;
+  width: 100px;
+  height: 100px;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:  rgba(4, 5, 87, 0.648);
+  font-family: 'Mansalva', cursive;
+}
+.square:hover{
+  color: aqua;
+}
+/* Data */
+.card .buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 300px;
+  height: 300px;
+}
+.gameSteps{
+  display: flex;
+  color: rgb(224, 147, 4);
+  font-family: 'Pirata One', cursive;
+  font-size: 36px;
+    margin-top: -10%;
+}
+.res1 .gameInfo{
+  margin-top: -5%;
+  color: green;
+  font-family: 'Pirata One', cursive;
+  font-size: 16px;
+}
+.res2 .gameInfo{
+  margin-top: -8%;
+  color: rgb(208, 208, 17);
+  font-family: 'Pirata One', cursive;
+  font-size: 16px;
+}
+.showResult .gameResult{
+  font-family: 'Mansalva', cursive;
+  font-size: 36px;
+  margin-top: -10%;
+}
+.btn{
+  margin-top: 10px;
+}
+.btn2{
+  margin-top: 10px;
+  width: 100px;
+  height: 100px;
+}
+
+.plannerstyle{
+  background-size: cover;
+  border-radius: 15px;
+}
+
+.buttons{
+  display: flex;
+  margin-top: 160%;
+  gap:40px;
+  /* justify-content: space-between; */
+  margin-bottom: 1%;
+}
+/* Homepage buttons */
+.home-buttons{
+  display: flex;
+  margin-top: 160%;
+  gap:40px;
+  /* justify-content: space-between; */
+  margin-bottom: 1%;
+}
+.home-buttons .form{
+  display: flex;
+  flex-direction: row;
+  gap:40px;
+}
+.home-buttons .select{
+  margin-left: -9%;
+  margin-top: 12%;
+}
+.home-buttons h1{
+  color: blue;
+  margin-top: 60px;
+  /* font-family: 'Gloria Hallelujah', cursive; */
+  font-family: 'Timmana', sans-serif;
+  font-size: 32px;
+  margin-left: 12px;
+}
+.home-buttons .btn2{
+  width: 50px;
+  height: 50px;
+  margin-top: 70%;
+  margin-left: 70%;
+}
+.home-buttons h1:hover{
+  cursor: pointer;
+  color: aqua;
+}
+.btn2:hover{
+  border-radius: 15%;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2), -2px -2px 3px rgba(0, 0, 0, 0.2);
+}
+
+
+  
+  
+  
+ 
