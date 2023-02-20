@@ -44,7 +44,6 @@ function history() {
      }}>
     <div className="App"> 
   <div className='h-screen flex flex-col justify-between items-center bg-gray-800' data-theme="winter">
-
   <div className="navbar  bg-neutral">
   <div className="flex-1">
     <a onClick={home} className="btn btn-ghost normal-case text-xl">tic-tac-toe</a>
@@ -74,6 +73,12 @@ function history() {
     </div>
   </div>
 </div> 
+{/* <div className='invitation'>
+<h1>Dear participants!</h1>
+<h1>Glad to welcome you on the start page.</h1>
+<h1>Below you will find a description of the game and conditions of participation.</h1>
+<h1>To start the game, go to the home page by clicking on the name in the upper left corner.</h1>
+</div> */}
 <Routes>
   <Route path='/home' element={<Home />}/>
   <Route path='/login' element={<Login />}/>

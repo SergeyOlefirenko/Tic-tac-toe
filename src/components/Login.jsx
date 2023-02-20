@@ -4,8 +4,12 @@ import { useState } from 'react';
 
 function Login() {
   const navigate = useNavigate();
-  const users = []
+  let users = []
   const [user, setUser] = useState(users)
+  if(localStorage.getItem('User')){
+    users.push(localStorage.getItem('User'))
+  }
+
   function submitHandler(e){
     e.preventDefault();
     if (
@@ -20,12 +24,14 @@ function Login() {
     {
       if (found){
       const copyUser = [...user]
-      // setUser(copyUser)
       copyUser.push(found)
-      localStorage.setItem('New user', copyUser)
+      localStorage.setItem('User', copyUser)
       setUser(copyUser)
       return found
     }
+    
+   
+  
     }
   }
   const bStyle = {
@@ -44,7 +50,7 @@ function Login() {
         placeholder='Please enter your name'
         className='input input-bordered w-full max-w-xs'/>
       <button onClick={home} type="submit" className="btn" style={bStyle}>Home/Start</button> 
-      <button className="btn" style={bStyle}>Login</button> 
+      <button className="btn" style={bStyle}>Add user</button> 
       </form>
     <div className="card-actions justify-end">
     </div>

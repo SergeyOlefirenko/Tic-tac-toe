@@ -9,10 +9,12 @@ import { useState } from "react";
 function Home() {
   const {setUser1} = useContext(AppContext)
   const {setUser2} = useContext(AppContext)
-  // const [data, setData] = useState()
   const navigate = useNavigate();
   // Get data from localStorage
-  const users = [localStorage.getItem('New user')]
+  let users = ['Computer']
+  if(localStorage.getItem('User')){
+    users.push(localStorage.getItem('User'))
+  }
   // Separate data by coma and put it to array 'user' like elements of new array
       const user = users.map((i) => (
             i.split(',')
@@ -64,7 +66,7 @@ function Home() {
               <form className="form" onSubmit={submitHandler}>
                     <select name="userSelect1" className="select w-24">
                       <option disabled selected>Select participant</option> 
-                      <option>Computer</option>
+                      {/* <option>Computer</option> */}
 {/* Pass data to selector */}
                         {user.map((i) => (
                         i.map((j) => (
@@ -79,7 +81,7 @@ function Home() {
                   </div>
                   <select name="userSelect2" className="select w-24">
                       <option disabled selected>Select participant</option> 
-                      <option>Computer</option>
+                      {/* <option>Computer</option> */}
 {/* Pass data to selector */}
                         {user.map((i) => (
                         i.map((j) => (
