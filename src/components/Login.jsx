@@ -29,9 +29,6 @@ function Login() {
       setUser(copyUser)
       return found
     }
-    
-   
-  
     }
   }
   const bStyle = {

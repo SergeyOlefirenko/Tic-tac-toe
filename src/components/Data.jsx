@@ -5,12 +5,13 @@ import shipPic from '../images/ship.png'
 import pirategirlPic from '../images/pirategirl.png'
 import { AppContext } from "../App";
 import { useContext } from "react";
+import { useState } from "react";
 
 
 const Data = () => {
   const {user1} = useContext(AppContext)
   const {user2} = useContext(AppContext)
-    const navigate = useNavigate();
+  const navigate = useNavigate();
     function previous() {
       navigate('/home')
     }
@@ -28,7 +29,7 @@ const Data = () => {
         <div className="card-body" style={card}>
           <h2 className="card-title"></h2>
           <div className='showResult'>
-          <p className='gameResult'>{localStorage.getItem('Winner') ? 'Winner: ' + localStorage.getItem('Winner') : 'Draw'}</p> 
+          <p className='gameResult'>{localStorage.getItem('Winners') ? 'Winner: ' + localStorage.getItem('Winners') : 'Draw'}</p> 
         </div> 
           <div className="buttons">  
           <button onClick={previous} className="btn2">

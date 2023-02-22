@@ -6,14 +6,13 @@ import { useState } from 'react';
 import { winCalc } from '../winCalc';
 import { AppContext } from "../App";
 import { useContext } from "react";
+import { useEffect } from "react";
 
 
 
 const Game = () => {
   const {user1} = useContext(AppContext)
   const {user2} = useContext(AppContext)
-  console.log(user1);
-  console.log(user2);
   const navigate = useNavigate();
   const [board, setBoard] = useState(Array(9).fill(null))
   const [xIsNext, setXIsNext] = useState(true)
@@ -23,13 +22,41 @@ const Game = () => {
   const [score, setScore] = useState(localStorage.getItem('Score'))
   const [drawScore, setDrawScore] = useState(localStorage.getItem('DrawScore'))
   const [draw, setDraw] = useState(false)
-  // const [userScore1, setUserScore1] = useState(0)
-  // const [userScore2, setUserScore2] = useState(0)
   const winner = winCalc(board)
+  const winlist = []
+// Winchecker
+  if(winner === 'X'){
+    setXCount(xcount + 4.5)
+    localStorage.setItem(user1, Math.round(xcount + 4.5)); 
+    localStorage.setItem('Winners', user1)
+    setXScore(Number(xscore))
+    localStorage.setItem('XScore', Number(xscore+1))
+    localStorage.removeItem('Draw'); 
+  }
+ 
+  if(winner === '0'){
+      setCount(count + 4.5)
+      localStorage.setItem(user2, Math.round(count + 4.5));
+      localStorage.setItem('Winners', user2)
+      setScore(Number(score))
+      localStorage.setItem('Score', Number(score+1))
+      localStorage.removeItem('Draw');
+    }
+
+  if(localStorage.getItem('Winners')){
+    // console.log("[add winner]")
+    winlist.push(localStorage.getItem('Winners'))
+    const list = [localStorage.getItem('Winners list')]
+    list.push(winlist);
+    localStorage.setItem('Winners list' , list)
+   
+  }
+  
   // Draw checker
   if (!winner && !board.includes(null)) {
+    console.log("[draw checker]")
     setDraw(true)
-    localStorage.removeItem('Winner');
+    localStorage.removeItem('Winners');
     localStorage.setItem(user1, 0)
     localStorage.setItem(user2, 0)
     setDrawScore(Number(drawScore))
@@ -37,34 +64,7 @@ const Game = () => {
     setBoard(board)
   }
 
-  //Dynamic score
-  // if(localStorage.getItem(user1)>localStorage.getItem(user2)){
-  //   setUserScore1(Number(userScore1))
-  //   localStorage.setItem(user1, Number(userScore1+1))
-  //   localStorage.removeItem('Draw');
-  // }
-  // else{
-  //   setUserScore2(Number(userScore2))
-  //   localStorage.setItem(user2, Number(userScore2+1))
-  //   localStorage.removeItem('Draw');
-  // }
-
-  // WinChecker
-  if(winner === 'X'){
-    setXCount(xcount + 4.5)
-    localStorage.setItem(user1, Math.round(xcount + 4.5)); 
-    setXScore(Number(xscore))
-    localStorage.setItem('XScore', Number(xscore+1))
-    localStorage.removeItem('Draw');
-  }
-    
-  if(winner === '0'){
-      setCount(count + 4.5)
-      localStorage.setItem(user2, Math.round(count + 4.5));
-      setScore(Number(score))
-      localStorage.setItem('Score', Number(score+1))
-      localStorage.removeItem('Draw');
-    }
+  // Checker
   const clickHandler = (index) => {
     const copyBoard = [...board]
     // Already clicked or not
@@ -78,6 +78,7 @@ const Game = () => {
     setXIsNext(!xIsNext)
     // setCount(count+1)
     
+    
     if (xIsNext) {
       setXCount(xcount + 33.33)
       localStorage.setItem(user1, Math.round(xcount + 33.33));
@@ -87,6 +88,8 @@ const Game = () => {
       localStorage.setItem(user2, Math.round(count + 33.33));
     }
   }
+
+ 
 
   const card = {
     height: '85vh',
@@ -109,7 +112,7 @@ const Game = () => {
               <p className='gameInfo'>{winner || draw ? 
               (winner ? localStorage.setItem("Winner" , winner): localStorage.setItem("Draw" , draw )) +
               'Winner: ' + navigate('/data') : 
-              'Next step: ' + (xIsNext ? 'X ' + user1 : '0 ' + user2)}
+              'Next step: ' + (xIsNext ? user1 : user2)}
               </p>
             </div>
             <div className="card-actions justify-end"></div>
