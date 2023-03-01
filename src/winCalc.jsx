@@ -18,3 +18,4 @@ export function winCalc(squares){
     }
     return null
 }
+

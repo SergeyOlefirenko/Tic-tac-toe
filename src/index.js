@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import Modal from "react-modal";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // const mongoose = require("mongoose");
 // mongoose.connect("mongodb://localhost/muggers-db")
@@ -14,5 +15,6 @@ root.render(
     </BrowserRouter>
   </React.StrictMode>
 );
-
+Modal.setAppElement("#root");
+ReactDOM.render(<App />, document.getElementById("root"));
 

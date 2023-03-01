@@ -193,8 +193,63 @@ border-radius: 10px;
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2), -2px -2px 3px rgba(0, 0, 0, 0.2);
 }
 
-
+/* AI */
+.inner{
+  margin-top: 650px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.aiSelect{
+  margin-top: 200px;
+}
+.styleContainer{
+  display: flex;
+  justify-content: center;
+  flex-flow: wrap;
+  position: relative;
+  margin-left: 20px;
+  margin-top: 24%;
+  width: 300px;
+  height: 300px;
   
-  
-  
- 
+}
+.styleSquares{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+}
+.styleSquares:hover{
+  cursor: pointer;
+}  
+.buttonRow{
+  display: flex;
+  width: 150px;
+  justify-content: space-between;
+} 
+.marker{
+  font-size: 68px;
+  font-family: 'Mansalva', cursive;
+}  
+/* .strikethrough{
+  position: absolute;
+  background-color: indianred;
+  height: 5px;
+  width: 350px;
+  display: none;
+} */
+/* .styledModal{
+  height: 300px;
+  position: relative;
+  margin: 0 auto;
+  top: 10%;
+  right: auto;
+  bottom: auto;
+  width: 320px;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+} */

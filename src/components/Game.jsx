@@ -23,38 +23,51 @@ const Game = () => {
   const [drawScore, setDrawScore] = useState(localStorage.getItem('DrawScore'))
   const [draw, setDraw] = useState(false)
   const winner = winCalc(board)
-  const winlist = []
-// Winchecker
-  if(winner === 'X'){
-    setXCount(xcount + 4.5)
-    localStorage.setItem(user1, Math.round(xcount + 4.5)); 
-    localStorage.setItem('Winners', user1)
-    setXScore(Number(xscore))
-    localStorage.setItem('XScore', Number(xscore+1))
-    localStorage.removeItem('Draw'); 
-  }
  
-  if(winner === '0'){
-      setCount(count + 4.5)
-      localStorage.setItem(user2, Math.round(count + 4.5));
-      localStorage.setItem('Winners', user2)
-      setScore(Number(score))
-      localStorage.setItem('Score', Number(score+1))
-      localStorage.removeItem('Draw');
-    }
-
-  if(localStorage.getItem('Winners')){
-    // console.log("[add winner]")
-    winlist.push(localStorage.getItem('Winners'))
-    const list = [localStorage.getItem('Winners list')]
-    list.push(winlist);
-    localStorage.setItem('Winners list' , list)
-   
-  }
   
+
+//   if(winner == 'X'){
+//     let copy = [localStorage.getItem('Storage')]
+//     copy.push(user1)
+//     console.log(copy);
+//     localStorage.setItem('Storage', copy)
+//   }
+// else if(winner == '0'){
+//     let copy = [localStorage.getItem('Storage')]
+//     copy.push(user2)
+//     console.log(copy);
+//     localStorage.setItem('Storage', copy)
+//   }
+
+  if(winner == 'X'){
+    let copy = [localStorage.getItem('Storage')]
+    copy.push(user1)
+    const element = copy.map((i) => (
+  i.split(',')
+))
+console.log(element);
+
+    localStorage.setItem('Storage', element)
+  }
+else if(winner == '0'){
+    let copy = [localStorage.getItem('Storage')]
+    copy.push(user2)
+    const element = copy.map((i) => (
+  i.split(',')
+))
+console.log(element);
+    localStorage.setItem('Storage', element)
+  }
+
+// const element = copy.map((i) => (
+//   i.split(',')
+// ))
+// console.log(element);
+//     localStorage.setItem('Storage', element)
+
+
   // Draw checker
   if (!winner && !board.includes(null)) {
-    console.log("[draw checker]")
     setDraw(true)
     localStorage.removeItem('Winners');
     localStorage.setItem(user1, 0)
@@ -64,7 +77,35 @@ const Game = () => {
     setBoard(board)
   }
 
-  // Checker
+ 
+
+
+
+
+
+
+
+  // WinChecker
+  // if(winner === 'X'){
+  //   setXCount(xcount + 4.5)
+  //   localStorage.setItem(user1, Math.round(xcount + 4.5)); 
+  //   localStorage.setItem('Winners', user1)
+  //   setXScore(Number(xscore))
+  //   localStorage.setItem('XScore', Number(xscore+1))
+  //   localStorage.removeItem('Draw'); 
+  // }
+ 
+  // if(winner === '0'){
+  //     setCount(count + 4.5)
+  //     localStorage.setItem(user2, Math.round(count + 4.5));
+  //     localStorage.setItem('Winners', user2)
+  //     setScore(Number(score))
+  //     localStorage.setItem('Score', Number(score+1))
+  //     localStorage.removeItem('Draw');
+  //   }
+
+
+
   const clickHandler = (index) => {
     const copyBoard = [...board]
     // Already clicked or not
@@ -76,8 +117,6 @@ const Game = () => {
     // Refresh state
     setBoard(copyBoard)
     setXIsNext(!xIsNext)
-    // setCount(count+1)
-    
     
     if (xIsNext) {
       setXCount(xcount + 33.33)
@@ -97,8 +136,9 @@ const Game = () => {
   }
   const startNewGame = () => {
     return (
-      <button className='startBtn' onClick={() => setBoard(Array(9).fill(null))}><p onClick={() => setXCount(0)}><p onClick={() => setCount(0)}><p onClick={() => localStorage.clear()}><p onClick={() => localStorage.clear()}>Clear field</p></p></p></p></button>
-    )
+      // <button className='startBtn' onClick={() => setBoard(Array(9).fill(null))}><p onClick={() => setXCount(0)}><p onClick={() => setCount(0)}><p onClick={() => localStorage.clear()}><p onClick={() => localStorage.clear()}>Clear field</p></p></p></p></button>
+      <button className='startBtn' onClick={() => setBoard(Array(9).fill(null))}><div onClick={() => setXCount(0)}><div onClick={() => setCount(0)}><div onClick={() => localStorage.clear()}><div onClick={() => localStorage.clear()}>Clear field</div></div></div></div></button>
+      )
   }
   return (
     <div className="">
@@ -110,7 +150,8 @@ const Game = () => {
               {startNewGame()}
               <Board squares={board} click={clickHandler} />
               <p className='gameInfo'>{winner || draw ? 
-              (winner ? localStorage.setItem("Winner" , winner): localStorage.setItem("Draw" , draw )) +
+              (winner ? localStorage.setItem('Winner' , winner): localStorage.setItem("Draw" , draw )) +
+              // (winner ? localStorage.setItem('Winners' , winner): localStorage.setItem("Draw" , draw )) +
               'Winner: ' + navigate('/data') : 
               'Next step: ' + (xIsNext ? user1 : user2)}
               </p>

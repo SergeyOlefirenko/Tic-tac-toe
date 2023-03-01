@@ -9,6 +9,7 @@ import { useState } from "react";
 function Home() {
   const {setUser1} = useContext(AppContext)
   const {setUser2} = useContext(AppContext)
+  // const {setWin} = useContext(AppContext)
   const navigate = useNavigate();
   // Get data from localStorage
   let users = ['Computer']
@@ -41,10 +42,16 @@ function Home() {
       alert("Please select next participant");
       return;
     }
+    // if( e.target.userSelect1.value === 'Computer' ||  e.target.userSelect1.value === 'Computer' 
+    // &&  e.target.userSelect1.value !="Select participant" || e.target.userSelect2.value !="Select participant")
+    // {
+    //     navigate('/ai')
+    // }
     const foundUser1 = e.target.userSelect1.value
     const foundUser2 = e.target.userSelect2.value
+    // const winner = localStorage.getItem('Winner')
     {
-      if (foundUser1 && foundUser2) {
+      if (foundUser1 !='Computer' && foundUser2 !='Computer') {
         setUser1(foundUser1)
         setUser2(foundUser2)
         navigate('/game')
@@ -53,7 +60,17 @@ function Home() {
         console.log(foundUser2);
         return foundUser1 && foundUser2
       }
-
+      else if( foundUser1 === 'Computer' ||  foundUser2 === 'Computer' 
+      &&  foundUser1 !="Select participant" || foundUser2 !="Select participant")
+      {
+          navigate('/aiGame')
+      }
+      // User VS Computer
+      
+      // if(winner && foundUser1 || winner && foundUser2){
+      //   localStorage.setItem('Data', winner)
+      //   console.log(winner);
+      // }
     }
   }
   return (
